@@ -1,6 +1,5 @@
-import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
-import { StyleSheet, Text, TextInput, TouchableOpacity, View, ImageBackground, Image, ScrollView, ImageBackgroundBase,FlatList } from 'react-native';
+import React from 'react';
+import { StyleSheet, Text, TouchableOpacity, View, Image, ScrollView,StatusBar } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
@@ -20,14 +19,16 @@ export default function Song() {
 
     return (
         <View style={styles.container}>
-            <StatusBar style="auto" />
+            <StatusBar
+        barStyle="light-content"
+      />
             <View style={styles.top}>
                 <TouchableOpacity onPress={() => uNavigation.goBack()}><Feather name="arrow-left" size={28} style={styles.icon1} /></TouchableOpacity>
                 <TouchableOpacity><Feather name="align-right" size={28} style={styles.icon2} /></TouchableOpacity>
             </View>
             <ScrollView>
                 <View style={{ flexDirection: 'row', marginTop: 20, marginBottom: 20, justifyContent: 'center' }}>
-                    <Image style={styles.imagePlaylist} source={require('../../image/wiz-khalifa-see-you-again-vid-billboard-1548_kzhw.jpg')} />
+                    <Image style={styles.imagePlaylist} source={require('../../assets/wiz-khalifa-see-you-again-vid-billboard-1548_kzhw.jpg')} />
                     <View style={{ alignSelf: 'center' }}>
                         <View><Text style={{ color: 'rgba(255, 255, 255, 1)', fontSize: 16 }}>See You Again</Text></View>
                         <View><Text style={{ color: 'rgba(255, 255, 255, 0.6)', fontSize: 10, marginBottom: 3 }}>Wiz Khalifa</Text></View>
@@ -47,9 +48,6 @@ export default function Song() {
                     <View>
                         <Text style={{ color: 'white', fontSize: 16, marginLeft: 15, marginBottom: 10, marginTop: 10, }}>Popular Song: </Text>
                     </View>
-
-
-
             </ScrollView>
             <TaskbarItem/>
         </View>
@@ -62,7 +60,6 @@ const styles = StyleSheet.create({
         flex: 1,
         padding: 0,
         backgroundColor: '#171717',
-        marginTop: 35,
     },
     icon1: {
         color: '#EDEDED',

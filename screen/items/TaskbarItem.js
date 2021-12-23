@@ -13,7 +13,7 @@ export default TaskbarItem = () => {
                 <TouchableOpacity><Feather name={'x'} style={{ color: '#EDEDED', fontSize: 30, }} /></TouchableOpacity>
                 <TouchableOpacity><Feather name={'skip-back'} style={{ color: '#EDEDED', fontSize: 30, }} /></TouchableOpacity>
                 <TouchableOpacity style={{ width: 50, height: 50 }} onPress={ListMusic}>
-                    <Image source={require('../../image/download.jpg')} style={{ width: 50, height: 50, alignItems: 'center', justifyContent: 'center', borderRadius: 100, }}>
+                    <Image source={require('../../assets/download.jpg')} style={{ width: 50, height: 50, alignItems: 'center', justifyContent: 'center', borderRadius: 100, }}>
                     </Image>
                 </TouchableOpacity>
                 <TouchableOpacity><Feather name={'pause'} style={{ color: '#EDEDED', fontSize: 30, }} /></TouchableOpacity>

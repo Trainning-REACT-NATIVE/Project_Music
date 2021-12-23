@@ -1,5 +1,5 @@
-import React from 'react';
-import { StyleSheet, Text, TextInput, TouchableOpacity, View, ImageBackground, Image, ScrollView, ImageBackgroundBase, FlatList, StatusBar } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Text, TextInput, TouchableOpacity, View, ImageBackground, Image, ScrollView, ImageBackgroundBase, FlatList,StatusBar } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 
@@ -14,9 +14,10 @@ import dataSong from '../Data/dataSong';
 import dataAlbum from '../Data/dataAlbum';
 import dataSlide from '../Data/dataslide';
 import dataSinger from '../Data/dataSinger';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 
-export default function Home({ navigation }) {
+export default function Home({navigation}) {
   const uNavigation = useNavigation();
 
   const onSignIn = () => {
@@ -39,18 +40,18 @@ export default function Home({ navigation }) {
   }
   const renderItemAlbum = ({ item }) => <AlbumItem item={item} onPress={Album} />
   const renderItemSong = ({ item }) => <SongItem item={item} onPress={Song} />
-  const renderSlideItem = ({ item }) => <SlideItem item={item} />
+  const renderSlideItem = ({ item }) => <SlideItem item={item}/>
   const renderSingerItem = ({ item }) => <SingerItem item={item} onPress={Singer} />
 
   /**/
   return (
-    <View style={styles.container}>
-      <StatusBar
+    <SafeAreaView style={styles.container}>
+       <StatusBar
         barStyle="light-content"
       />
       <View style={styles.top}>
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-          <TouchableOpacity onPress={() => navigation.openDrawer()}><Feather name='align-left' size={28} style={{ color: '#ffffff', marginLeft: 15, }} /></TouchableOpacity>
+          <TouchableOpacity onPress={onSignIn}><Text style={styles.texttop}>LOGIN</Text></TouchableOpacity>
           <View style={{ width: 1, height: 25, backgroundColor: 'white', marginLeft: 10, }}></View>
           <Text style={{ color: 'white', fontSize: 16, marginLeft: 10, }}>Home</Text>
         </View>
@@ -58,13 +59,13 @@ export default function Home({ navigation }) {
       </View>
       <ScrollView>
         <View>
-          <FlatList
-            data={dataSlide}
-            keyExtractor={item => item.id}
-            horizontal
-            pagingEnabled
-            renderItem={renderSlideItem}
-          />
+        <FlatList
+                data={dataSlide}
+                keyExtractor={item => item.id}
+                horizontal
+                pagingEnabled
+                renderItem={renderSlideItem}
+            />
         </View>
         <View>
           <TouchableOpacity style={styles.textAlbum}>
@@ -100,17 +101,17 @@ export default function Home({ navigation }) {
             <Feather name="chevron-right" style={{ color: '#EDEDED', marginRight: 5, fontSize: 30, }} />
           </TouchableOpacity>
           <View style={{ paddingLeft: 10, }}>
-            <FlatList
-              data={dataSinger}
-              keyExtractor={item => item.id}
-              horizontal
-              renderItem={renderSingerItem}
+          <FlatList
+                data={dataSinger}
+                keyExtractor={item => item.id}
+                horizontal
+                renderItem={renderSingerItem}
             />
           </View>
         </View>
       </ScrollView>
-      <TaskbarItem />
-    </View>
+      <TaskbarItem/>
+    </SafeAreaView>
   );
 }
 
@@ -153,5 +154,16 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 32,
+  },
+  texttop: {
+    color: '#EDEDED',
+    fontSize: 10,
+    borderRadius: 30,
+    borderColor: '#EDEDED',
+    borderWidth: 2,
+    width: 100,
+    padding: 5,
+    textAlign: 'center',
+    marginLeft: 10,
   },
 });

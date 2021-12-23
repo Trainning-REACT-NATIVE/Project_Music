@@ -1,6 +1,5 @@
-import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { StyleSheet, Text, TextInput, TouchableOpacity, View, ImageBackground, Image, KeyboardAvoidingView, TouchableWithoutFeedback, ScrollView } from 'react-native';
+import { StyleSheet, Text, TextInput, TouchableOpacity, View, ImageBackground, Image, KeyboardAvoidingView, TouchableWithoutFeedback, ScrollView, StatusBar } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
@@ -14,29 +13,39 @@ export default function SignIn() {
   const onChangeSecure = () => {
     setSecurePassword(securePassword ? false : true);
   }
+  const SignUp = () => {
+    uNavigation.navigate('SignUp')
+  };
   /**/
   return (
     <View style={styles.container}>
-      <StatusBar style="auto"/>
+      <StatusBar
+        barStyle="light-content"
+      />
       <TouchableOpacity onPress={() => uNavigation.goBack()}><Feather name="arrow-left" size={28} style={styles.icon} /></TouchableOpacity>
       <Image
         style={styles.tinyLogo}
-        source={require('../../image/—Pngtree—note_18885.png')}
+        source={require('../../assets/—Pngtree—note_18885.png')}
       />
       <View style={styles.textIp2}>
-        <Feather name="mail" size={25} color="#EDEDED" style={{marginLeft: 5,}} />
-        <TextInput keyboardType={'email-address'} style={{marginLeft: 5,}} placeholder={"UserName"} placeholderTextColor={'#9B9B9B'} onChangeText={null} ></TextInput>
-        </View>
-        <View style={styles.textIp2}>
-          <Feather name="lock" size={25} color="#EDEDED" style={{marginLeft: 5,}} />
-          <TextInput secureTextEntry={securePassword} placeholder={"PassWord"} placeholderTextColor={'#9B9B9B'} onChangeText={null} style={{ width: 185,marginLeft: 5, }}></TextInput>
-          <TouchableOpacity onPress={onChangeSecure}><Feather name="eye" size={25} color="#EDEDED" /></TouchableOpacity>
-        </View>
-        <View style={{justifyContent: 'space-between', alignItems: 'center', flex: 1,}}>
+        <Feather name="mail" size={25} color="#EDEDED" style={{ marginLeft: 5, }} />
+        <TextInput keyboardType={'email-address'} style={{ marginLeft: 5, }} placeholder={"UserName"} placeholderTextColor={'#9B9B9B'} onChangeText={null} ></TextInput>
+      </View>
+      <View style={styles.textIp2}>
+        <Feather name="lock" size={25} color="#EDEDED" style={{ marginLeft: 5, }} />
+        <TextInput secureTextEntry={securePassword} placeholder={"PassWord"} placeholderTextColor={'#9B9B9B'} onChangeText={null} style={{ width: 185, marginLeft: 5, }}></TextInput>
+        <TouchableOpacity onPress={onChangeSecure}><Feather name="eye" size={25} color="#EDEDED" /></TouchableOpacity>
+      </View>
+      <View style={{ justifyContent: 'space-between', alignItems: 'center', flex: 1, marginBottom: 15,}}>
         <TouchableOpacity onPress={onFPassWord}><Text style={{ color: '#278EA5', paddingLeft: 100, fontStyle: 'italic', fontSize: 14, }}>Forgot PassWord?</Text></TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={null}><Text style={{ color: 'white', fontWeight: 'bold', fontSize: 23,  }}  >LOGIN</Text></TouchableOpacity>
-        <View style={{flexDirection: 'row', marginBottom: 10,}}><Text style={{color: '#EDEDED', fontWeight: 'bold'}}>Don’t have an account?</Text><TouchableOpacity><Text style={{color: '#278EA5', fontWeight: 'bold'}}> SignUp</Text></TouchableOpacity></View>
+        <TouchableOpacity style={styles.button} onPress={null}><Text style={{ color: 'white', fontWeight: 'bold', fontSize: 23, }}  >LOGIN</Text></TouchableOpacity>
+        <View style={{ flexDirection: 'row', marginBottom: 10, }}>
+          <Text style={{ color: '#EDEDED', fontWeight: 'bold' }}>Don’t have an account?</Text>
+          <TouchableOpacity onPress={SignUp}>
+            <Text style={{ color: '#278EA5', fontWeight: 'bold' }}> SignUp</Text>
+          </TouchableOpacity>
         </View>
+      </View>
     </View>
   );
 }
@@ -47,7 +56,6 @@ const styles = StyleSheet.create({
     padding: 0,
     alignItems: 'center',
     backgroundColor: '#171717',
-    marginTop: 35,
   },
   tinyLogo: {
     width: 300,

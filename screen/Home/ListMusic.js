@@ -1,6 +1,5 @@
-import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { StyleSheet, Text, TextInput, TouchableOpacity, View, ImageBackground, Image, ScrollView, ImageBackgroundBase } from 'react-native';
+import { StyleSheet, Text, TextInput, TouchableOpacity, View, ImageBackground, Image, ScrollView, ImageBackgroundBase,StatusBar } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { color } from 'react-native-reanimated';
@@ -17,12 +16,14 @@ export default function LM() {
   /**/
   return (
     <View style={styles.container}>
-      <StatusBar style="auto" />
+       <StatusBar
+        barStyle="light-content"
+      />
       <View style={styles.top}>
         <TouchableOpacity onPress={() => uNavigation.goBack()}><Feather name="arrow-left" size={28} style={styles.icon1} /></TouchableOpacity>
         <TouchableOpacity><Feather name="list" size={28} style={styles.icon2} /></TouchableOpacity>
       </View>
-      <View style={{width: '100%'}}><Image source={require('../../image/download.jpg')} style={{ alignSelf: 'center', borderRadius: 300, marginBottom: 160, marginTop: 40, }} /></View>
+      <View style={{width: '100%'}}><Image source={require('../../assets/download.jpg')} style={{ alignSelf: 'center', borderRadius: 300, marginBottom: 160, marginTop: 40, }} /></View>
       <View style={{ marginLeft: 30 }}>
         <View><Text style={{ color: 'white', fontSize: 16, }}>See You Again</Text></View>
         <View><Text style={{ color: 'white', fontSize: 14, color: 'rgba(255, 255, 255, 0.5)' }}>Wiz Khalifa</Text></View>
@@ -51,7 +52,6 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 0,
     backgroundColor: '#171717',
-    marginTop: 35,
   },
   iconMS: {
     width: 320,
